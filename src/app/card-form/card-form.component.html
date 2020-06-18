@@ -1,0 +1,34 @@
+<div class="columns">
+  <div class="column">
+    <cq-card [name]="cardForm.get('name').value"
+             [cardNumber]="cardForm.get('cardNumber').value"
+             [expiration]="cardForm.get('expiration').value">
+    </cq-card>
+  </div>
+  <div class="column">
+    <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+      <cq-input [control]="cardForm.get('name')" label="Name"></cq-input>
+      <cq-input [control]="cardForm.get('cardNumber')"
+                label="Card Number"></cq-input>
+      <div class="columns">
+        <div class="column">
+          <cq-input [control]="cardForm.get('expiration')"
+                    label="Expiration (MM/YY)"></cq-input>
+        </div>
+        <div class="column">
+          <cq-input [control]="cardForm.get('securityCode')"
+                    label="Security Code"></cq-input>
+        </div>
+      </div>
+      <div class="buttons">
+        <button [disabled]="cardForm.invalid" class="button is-primary"
+                type="submit">Submit
+        </button>
+        <button class="button is-warning"
+                type="button"
+                (click)="onReset()">Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
